@@ -9,6 +9,7 @@ const navigation = [
   { name: 'Workshop', href: '#', current: false },
   { name: 'Investors & Buyers', href: '#', current: false },
   { name: 'Career Restarters', href: '#', current: false },
+  { name: 'Login', href: '#', current: false },
 ]
 
 function classNames(...classes) {
