@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Home from './assets/components/home/home'
-
+import Workshop from './assets/components/workshop/workshop'
+import Job from './assets/components/job/job'
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
@@ -15,6 +16,14 @@ const router = createBrowserRouter([
       {
       path : '/',
       element : <Home />,
+      },
+      {
+        path : 'workshop',
+        element : <Workshop />,
+      },
+      {
+        path : 'job',
+        element : <Job />,
       },
       
     ]
