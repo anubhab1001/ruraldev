@@ -4,10 +4,10 @@ export default function Footer() {
     
     return(
         <>
-    <div class="bg-stone-500">
+    <div class="bg-blue-300">
     <div class="max-w-screen-xl mx-auto px-4 sm:px-6  text-gray-800 flex flex-wrap justify-center flex justify-between">
         <div class="p-5">
-            <div class="text-xs uppercase text-gray-500 font-medium">Home</div>
+            <div class="text-xs uppercase text-gray-500 font-medium"></div>
             <a class="my-3 block font-extrabold">Company 
             </a>
             
@@ -18,7 +18,7 @@ export default function Footer() {
             
         </div>
         <div class="p-5">
-            <div class="text-xs uppercase text-gray-500 font-medium">Resources</div>
+            <div class="text-xs uppercase text-gray-500 font-medium"></div>
 
             <a class="my-3 block font-extrabold" >Legal 
             </a>
@@ -28,7 +28,7 @@ export default function Footer() {
             </a>
         </div>
         <div class="p-5">
-            <div class="text-xs uppercase text-gray-500 font-medium">Support</div>
+            <div class="text-xs uppercase text-gray-500 font-medium"></div>
 
             <a class="my-3 block font-extrabold" >Services 
             </a>
@@ -38,7 +38,7 @@ export default function Footer() {
             </a>
         </div>
         <div class="p-5">
-            <div class="text-xs uppercase text-gray-500 font-medium">Contact us</div>
+            <div class="text-xs uppercase text-gray-500 font-medium"></div>
 
             <a class="my-3 block" href="/#">XXX XXXX, lorem ipsum,abcd
                 
