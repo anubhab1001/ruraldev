@@ -95,7 +95,7 @@ const Workshop = () => {
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+        
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
             Upcoming Workshops
@@ -105,7 +105,7 @@ const Workshop = () => {
           </p>
         </div>
 
-        {/* Workshops Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {workshops.map((workshop) => (
             <div 
