@@ -1,6 +1,11 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function Home() {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/job');  
+    };
   return (
     <>
         <section className="flex flex-col lg:flex-row items-center justify-between px-4 py-12 md:px-8 md:py-16 bg-blue-50 text-blue-900">
@@ -39,13 +44,13 @@ function Home() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-10">
-          <button className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <button onclick={handleClick} className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             Join as an Entrepreneur
           </button>
-          <button className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <button  onclick={handleClick} className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             Explore Job Opportunities
           </button>
-          <button className="px-4 py-2 md:px-6 md:py-3 text-blue-600 font-semibold underline hover:text-blue-800 hover:no-underline transition-colors duration-300">
+          <button  onclick={handleClick} className="px-4 py-2 md:px-6 md:py-3 text-blue-600 font-semibold underline hover:text-blue-800 hover:no-underline transition-colors duration-300">
             Become a Mentor/Investor
           </button>
         </div>
