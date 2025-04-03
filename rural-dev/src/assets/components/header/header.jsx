@@ -10,32 +10,19 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import FinanceCalculator from "../finnaceCalculator/FinanceCalculator";
 
 const navigation = [
-<<<<<<< HEAD
   { name: "Home", href: "./", current: true },
-  { name: "Job Seekers", href: "#", current: false },
-  { name: "Workshop", href: "#", current: false },
-  { name: "Investors & Buyers", href: "#", current: false },
-  { name: "Career Restarters", href: "#", current: false },
-  { name: "Marketplace", href: "#", current: false },
+  { name: "Job Seekers", href: "/job", current: false },
+  { name: "Workshop", href: "./workshop", current: false },
+  { name: "Marketplace", href: "/marketplace", current: false },
   {
     name: "Your Finance Calculator",
-    href: { pathname: "FinanceCalculator" },
+    href: "/finance-calculator",
     current: false,
   },
   { name: "Login", href: "#", current: false },
 ];
-=======
-  { name: 'Home', href: './', current: true },
-  { name: 'Job Seekers', href: '/job', current: false },
-  { name: 'Workshop', href: './workshop', current: false },
-  { name: 'Marketplace', href: '/marketplace', current: false },
-  { name: 'Your Finance Calculator', href: '#', current: false },
-  { name: 'Login', href: '#', current: false },
-]
->>>>>>> upstream/main
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -63,11 +50,7 @@ export default function Header() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <img alt="Your Company" src="#" className="h-8 w-auto" />
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
