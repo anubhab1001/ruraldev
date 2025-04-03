@@ -7,6 +7,7 @@ import Calculator from "./assets/components/finnaceCalculator/FinanceCalculator.
 import Workshop from "./assets/components/workshop/workshop.jsx";
 import Job from "./assets/components/job/job.jsx";
 import Marketplace from "./assets/components/marketplace/marketplace.jsx";
+import Login from "./assets/components/login/AuthHero.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/finance-calculator",
         element: <Calculator />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

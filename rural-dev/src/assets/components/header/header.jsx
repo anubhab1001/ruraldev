@@ -21,7 +21,7 @@ const navigation = [
     href: "/finance-calculator",
     current: false,
   },
-  { name: "Login", href: "#", current: false },
+  { name: "Login", href: "/login", current: false },
 ];
 
 function classNames(...classes) {
