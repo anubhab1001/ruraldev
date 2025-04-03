@@ -31,7 +31,21 @@ const Workshop = () => {
       date: 'July 5, 2023',
       instructor: 'Priya Patel',
       seats: '15/30 seats available'
-    }
+    },
+    {
+        id: 'ws1',
+        title: 'Digital Marketing Fundamentals',
+        date: 'June 15, 2023',
+        instructor: 'Sarah Johnson',
+        seats: '12/25 seats available'
+      },
+      {
+        id: 'ws1',
+        title: 'Digital Marketing Fundamentals',
+        date: 'June 15, 2023',
+        instructor: 'Sarah Johnson',
+        seats: '12/25 seats available'
+      }
   ];
 
   const handleChange = (e) => {

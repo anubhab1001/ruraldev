@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Home from './assets/components/home/home'
 import Workshop from './assets/components/workshop/workshop'
+import Marketplace from './assets/components/marketplace/marketplace'
 import Job from './assets/components/job/job'
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         path : 'job',
         element : <Job />,
       },
+      {
+        path : 'marketplace',
+        element : <Marketplace />,
+      },
+      
       
     ]
   }
