@@ -13,6 +13,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import FinanceCalculator from "../finnaceCalculator/FinanceCalculator";
 
 const navigation = [
+<<<<<<< HEAD
   { name: "Home", href: "./", current: true },
   { name: "Job Seekers", href: "#", current: false },
   { name: "Workshop", href: "#", current: false },
@@ -26,6 +27,15 @@ const navigation = [
   },
   { name: "Login", href: "#", current: false },
 ];
+=======
+  { name: 'Home', href: './', current: true },
+  { name: 'Job Seekers', href: '/job', current: false },
+  { name: 'Workshop', href: './workshop', current: false },
+  { name: 'Marketplace', href: '/marketplace', current: false },
+  { name: 'Your Finance Calculator', href: '#', current: false },
+  { name: 'Login', href: '#', current: false },
+]
+>>>>>>> upstream/main
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

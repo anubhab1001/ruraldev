@@ -13,8 +13,12 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.1",
+<<<<<<< HEAD
     "@tensorflow/tfjs": "^4.22.0",
     "openai": "^4.91.1",
+=======
+    "emailjs-com": "^3.2.0",
+>>>>>>> upstream/main
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.1",
