@@ -1,5 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 function Home() {
     const navigate = useNavigate();
 
@@ -7,91 +10,132 @@ function Home() {
         navigate('/marketplace');  
     };
     const handleClick2 = () => {
-      navigate('/job');  
-  };
-  const handleClick3 = () => {
-    navigate('/workshop');  
-};
-  return (
-    <>
-        <section className="flex flex-col lg:flex-row items-center justify-between px-4 py-12 md:px-8 md:py-16 bg-blue-50 text-blue-900">
-      {/* Left Content */}
-      <div className="w-full lg:max-w-2xl mb-10 lg:mb-0">
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4 md:mb-6">
+        navigate('/job');  
+    };
+    const handleClick3 = () => {
+        navigate('/workshop');  
+    };
+
+    return (
+        <>
+ <section className="flex flex-col items-center justify-center px-4 py-12 md:px-8 md:py-16 text-[#000000]">
+  {/* Main Content Container */}
+  <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-6">
+    {/* Left Content */}
+    <div className="w-full flex flex-col items-center">
+      {/* Title */}
+      <div className="text-center mb-6 w-full">
+        <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-3 md:mb-4 text-black">
           Empowering Women to Build, Grow, and Thrive – Together.
         </h1>
-        
-        {/* Subtitle */}
-        <p className="text-base md:text-lg text-blue-700 mb-6 md:mb-8">
-          A one-stop platform for women entrepreneurs, job seekers, and career returners. 
+        <p className="text-base md:text-lg mx-auto max-w-2xl">
+          A one-stop platform for women entrepreneurs, job seekers, and career returners.
           Access funding, mentorship, jobs, and tools to succeed.
         </p>
+      </div>
 
-        {/* Highlights */}
-        <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
-          <div className="flex items-start gap-3 md:gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all duration-300">
-            <span className="text-2xl hover:scale-110 transition-transform">🚀</span>
-            <p className="hover:text-blue-800 transition-colors">Launch & Grow Your Business – Showcase your brand, connect with buyers, and secure funding.</p>
+      {/* 📸 Carousel - Full Width */}
+      <div className="mb-6 w-full h-90 max-w-6xl">
+        <Carousel
+          showArrows={true}
+          showStatus={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={3000}
+          className="rounded-xl overflow-hidden shadow-lg"
+        >
+          {/* Slide 1 */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-20 transition-opacity"></div>
+            <img src="image3.jpeg" alt="Women entrepreneurs working" className="w-full h-90 object-cover" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+              <div className="flex items-start gap-2">
+                <span className="text-xl text-white">🚀</span>
+                <p className="text-white font-medium text-sm">Launch & Grow Your Business</p>
+              </div>
+            </div>
           </div>
-          <div className="flex items-start gap-3 md:gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all duration-300">
-            <span className="text-2xl hover:scale-110 transition-transform">💼</span>
-            <p className="hover:text-blue-800 transition-colors">Find Flexible Jobs & Internships – Discover women-friendly workplaces and restart your career.</p>
-          </div>
-          <div className="flex items-start gap-3 md:gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all duration-300">
-            <span className="text-2xl hover:scale-110 transition-transform">🎓</span>
-            <p className="hover:text-blue-800 transition-colors">Learn & Upskill – Attend workshops, get certified, and gain mentorship from experts.</p>
-          </div>
-          <div className="flex items-start gap-3 md:gap-4 p-3 rounded-lg hover:bg-blue-100 transition-all duration-300">
-            <span className="text-2xl hover:scale-110 transition-transform">💰</span>
-            <p className="hover:text-blue-800 transition-colors">Financial Independence Made Easy – Calculators, budgeting tools, and funding guidance.</p>
-          </div>
-        </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-10">
-          <button onClick={handleClick} className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-            Join as an Entrepreneur
-          </button>
-          <button  onClick={handleClick2} className="px-4 py-2 md:px-6 md:py-3 bg-white text-blue-600 font-semibold border-2 border-blue-600 rounded-lg rounded-lg hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-            Explore Job Opportunities
-          </button>
-          <button  onClick={handleClick3} className="px-4 py-2 md:px-6 md:py-3 text-blue-600 font-semibold underline hover:text-blue-800 hover:no-underline transition-colors duration-300">
-            Become a Mentor/Investor
-          </button>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="text-sm">
-          <p className="text-blue-700">Supported by 10,000+ women-led businesses</p>
-          <div className="flex flex-wrap gap-3 md:gap-4 mt-2">
-            <span className="font-medium px-3 py-1 bg-blue-100 rounded-full hover:bg-blue-200 transition-colors">Forbes</span>
-            <span className="font-medium px-3 py-1 bg-blue-100 rounded-full hover:bg-blue-200 transition-colors">UN Women</span>
-            <span className="font-medium px-3 py-1 bg-blue-100 rounded-full hover:bg-blue-200 transition-colors">She Leads</span>
+          {/* Slide 2 */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-20 transition-opacity"></div>
+            <img src="image2.jpeg" alt="Women at workplace" className="w-full h-90 object-cover" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+              <div className="flex items-start gap-2">
+                <span className="text-xl text-white">💼</span>
+                <p className="text-white font-medium text-sm">Find Flexible Jobs</p>
+              </div>
+            </div>
           </div>
+
+          {/* Slide 3 */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-20 transition-opacity"></div>
+            <img src="image1.jpeg" alt="Women in workshop" className="w-full h-90 object-cover" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+              <div className="flex items-start gap-2">
+                <span className="text-xl text-white">🎓</span>
+                <p className="text-white text-center font-medium text-sm">Learn & Upskill</p>
+              </div>
+            </div>
+          </div>
+        </Carousel>
+      </div>
+
+      {/* CTA Buttons */}
+      <div className="flex flex-col w-full max-w-6xl gap-3 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
+          <button onClick={handleClick} className="px-4 py-2 bg-[#1f375d] text-white font-semibold rounded-lg hover:bg-[#addfde] hover:text-black hover:shadow-md transition-all duration-200 w-full">
+            Join as Entrepreneur
+          </button>
+          <button onClick={handleClick2} className="px-4 py-2 bg-[#1f375d] text-white font-semibold rounded-lg hover:bg-[#addfde] hover:text-black hover:shadow-md transition-all duration-200 w-full">
+            Find Jobs
+          </button>
+          <button onClick={handleClick3} className="px-4 py-2 bg-[#1f375d] text-white font-semibold rounded-lg hover:bg-[#addfde] hover:text-black hover:shadow-md transition-all duration-200 w-full">
+            Be a Mentor
+          </button>
         </div>
       </div>
 
-      {/* Right Image */}
-      <div className="w-full lg:w-1/2 lg:pl-8">
-        <div className="w-full h-64 sm:h-80 md:h-96 bg-blue-200 rounded-2xl flex items-center justify-center text-center p-6 text-blue-700 hover:shadow-xl transition-shadow duration-500">
-          <div className="max-w-md">
-            <div className="text-4xl mb-4">👩‍💼👩‍🔧👩‍🎓</div>
-            <p>Diverse women collaborating on laptops, in workshops, and networking</p>
-          </div>
+      {/* 💬 Info + Partners Section */}
+      <div className="flex flex-col md:flex-row justify-between w-full max-w-6xl px-6 py-10 gap-6">
+        {/* Left: Lorem Ipsum */}
+        <div className="w-full md:w-1/2 p-6 border-2 border-blue-500 rounded-lg">
+          <h1 className='text-center font-bold'>About Us</h1>
+          <p className="text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum perspiciatis consequuntur eius ipsum corporis, numquam illo ab earum dolor minus, impedit expedita dignissimos reprehenderit laudantium nostrum repudiandae repellendus at alias.
+          </p>
         </div>
+
+        {/* Right: Supporting Companies */}
+        <div id="aboutUs" className="w-full md:w-1/2 flex flex-col justify-center border-2 border-blue-500 rounded-lg p-6">
+  <div className="text-center md:text-left">
+    <p className="text-black/80 mb-4 text-base sm:text-lg">
+      Supported by <strong>10,000+</strong> women-led businesses
+    </p>
+    <div className="flex flex-wrap justify-center md:justify-start gap-2">
+      <span className="text-sm px-3 py-1.5 bg-[#1f375d] rounded-full hover:bg-[#addfde] hover:text-black transition-colors text-white cursor-pointer">
+        Forbes
+      </span>
+      <span className="text-sm px-3 py-1.5 bg-[#1f375d] rounded-full hover:bg-[#addfde] hover:text-black transition-colors text-white cursor-pointer">
+        UN Women
+      </span>
+      <span className="text-sm px-3 py-1.5 bg-[#1f375d] rounded-full hover:bg-[#addfde] hover:text-black transition-colors text-white cursor-pointer">
+        She Leads
+      </span>
+    </div>
+  </div>
+</div>
+
       </div>
-      <div className="w-full lg:w-1/2 lg:pl-8">
-        <div className="w-full h-64 sm:h-80 md:h-96 bg-blue-200 rounded-2xl flex items-center justify-center text-center p-6 text-blue-700 hover:shadow-xl transition-shadow duration-500">
-          <div className="max-w-md">
-            <div className="text-4xl mb-4">👩‍💼👩‍🔧👩‍🎓</div>
-            <p>Diverse women collaborating on laptops, in workshops, and networking</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    </>
-  );
+
+    </div>
+  </div>
+</section>
+
+        </>
+    );
 }
 
 export default Home;
