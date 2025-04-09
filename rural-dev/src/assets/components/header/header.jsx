@@ -30,12 +30,12 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
-    <Disclosure as="nav" className="bg-[#0c4c8a]">
+    <Disclosure as="nav" className="bg-blue-800">
     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div className="relative flex h-16 items-center justify-between">
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
           {/* Mobile menu button*/}
-          <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-[#b51d23] hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-inset">
+          <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-[#addfde] hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-inset">
             <span className="absolute -inset-0.5" />
             <span className="sr-only">Open main menu</span>
             <Bars3Icon
@@ -139,8 +139,8 @@ export default function Header() {
             aria-current={item.current ? "page" : undefined}
             className={classNames(
               item.current
-                ? "bg-[#b51d23] text-white"
-                : "text-white hover:bg-[#b51d23] hover:text-white",
+                ? "bg-[#1f375d] text-white hover:bg-[#addfde] hover:text-black"
+                : "text-white hover:bg-[#addfde] hover:text-black",
               "block rounded-md px-3 py-2 text-base font-medium"
             )}
           >

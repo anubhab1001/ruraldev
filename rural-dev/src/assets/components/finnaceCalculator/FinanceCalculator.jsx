@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { analyzeExpenses } from "../../constant/aiModel"; // Adjust the import path as necessary
+//import { analyzeExpenses } from "../../constant/aiModel"; // Adjust the import path as necessary
 import Suggestions from "./Suggestions";
 
 const FinanceCalculator = () => {
