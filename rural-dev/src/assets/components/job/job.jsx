@@ -69,7 +69,7 @@ const Job = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
-      <header className="py-12 px-4 text-center bg-blue-700 text-white">
+      <header className=" bg-[#1f375d] py-12 px-4 text-center text-white">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Opportunities for Women</h1>
         <p className="text-xl max-w-2xl mx-auto">
           Find your next career move or restart your journey with women-friendly roles
