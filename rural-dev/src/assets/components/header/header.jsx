@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import {
   Disclosure,
   DisclosureButton,
@@ -9,7 +8,15 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../../utils/firebase"; 
+import { useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "Home", href: "./", current: false },
@@ -21,7 +28,6 @@ const navigation = [
     href: "/finance-calculator",
     current: false,
   },
-  { name: "Login", href: "/login", current: false },
 ];
 
 function classNames(...classes) {
@@ -29,6 +35,33 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      if (u) {
+        setUser(u);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleGuestContinue = () => {
+    alert("Continuing as Guest");
+  };
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
+
+  const handleLoginRedirect = () => {
+    navigate("/login");
+  };
+
   return (
     <Disclosure as="nav" className="bg-blue-800">
     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -101,7 +134,7 @@ export default function Header() {
             >
               <MenuItem>
                 <a
-                  href="/profile"
+                  href="#"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Your Profile
@@ -109,15 +142,15 @@ export default function Header() {
               </MenuItem>
               <MenuItem>
                 <a
-                  href="/log"
+                  href="#"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Your logs
+                  Settings
                 </a>
               </MenuItem>
               <MenuItem>
                 <a
-                  href="/"
+                  href="#"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Sign out
