@@ -1,6 +1,20 @@
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import { auth } from "../../../utils/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 export default function ProfileHero() {
+
+   const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (u) => {
+        if (u) {
+          setUser(u);
+        } else {
+          setUser(null);
+        }
+      });
+      return () => unsubscribe();
+    }, []);
   const [editMode, setEditMode] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -8,7 +22,7 @@ export default function ProfileHero() {
     email: "",
     skills: [],
     education: [],
-    work: []
+    work: [],
   });
   const [inputs, setInputs] = useState({ skill: "", education: "", work: "" });
 
@@ -49,11 +63,16 @@ export default function ProfileHero() {
       <div className="w-full max-w-6xl flex flex-col md:flex-row rounded-3xl shadow-2xl overflow-hidden border border-gray-200 bg-white">
         {/* Left: Profile Section */}
         <div className="w-full md:w-1/3 bg-gradient-to-b from-blue-500 to-blue-400 text-white p-8 flex flex-col items-center justify-center relative">
-          <img
-            src="anubhab.jpg"
+        { user?.photoURL ? (<img
+            src={user.photoURL}
             alt="Profile"
             className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-white shadow-lg mb-4"
-          />
+          />): (
+            <img
+            src="https://via.placeholder.com/150"
+            alt="Profile"
+            className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-white shadow-lg mb-4"/>
+          )}
           {editMode ? (
             <form onSubmit={handleSubmit} className="w-full space-y-3">
               <input
@@ -91,7 +110,7 @@ export default function ProfileHero() {
             <div className="text-center">
               <h2 className="text-2xl font-bold">{formData.name}</h2>
               <p className="mt-2">📞 {formData.phone}</p>
-              <p className="mt-1">✉️ {formData.email}</p>
+              <p className="mt-1">✉ {formData.email}</p>
               <button
                 onClick={() => setEditMode(true)}
                 className="mt-4 text-sm underline text-white hover:text-blue-200"
@@ -108,7 +127,9 @@ export default function ProfileHero() {
             <div className="space-y-6">
               {/* Skills */}
               <div>
-                <label className="block text-gray-700 font-medium mb-1">Skills</label>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Skills
+                </label>
                 <div className="flex flex-col sm:flex-row gap-2 mb-2">
                   <input
                     type="text"
@@ -143,7 +164,9 @@ export default function ProfileHero() {
 
               {/* Education */}
               <div>
-                <label className="block text-gray-700 font-medium mb-1">Education Timeline</label>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Education Timeline
+                </label>
                 <div className="flex flex-col sm:flex-row gap-2 mb-2">
                   <input
                     type="text"
@@ -178,7 +201,9 @@ export default function ProfileHero() {
 
               {/* Work */}
               <div>
-                <label className="block text-gray-700 font-medium mb-1">Current Work</label>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Current Work
+                </label>
                 <div className="flex flex-col sm:flex-row gap-2 mb-2">
                   <input
                     type="text"
@@ -215,30 +240,42 @@ export default function ProfileHero() {
             <div className="space-y-6">
               {/* Skills View */}
               <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Skill Set</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                  Skill Set
+                </h3>
                 <div className="overflow-x-auto">
                   <ul className="list-disc list-inside text-gray-700 bg-gray-100 p-3 rounded shadow-inner">
-                    {formData.skills.map((skill, i) => <li key={i}>{skill}</li>)}
+                    {formData.skills.map((skill, i) => (
+                      <li key={i}>{skill}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
               {/* Education View */}
               <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Education Timeline</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                  Education Timeline
+                </h3>
                 <div className="overflow-x-auto">
                   <ul className="list-disc list-inside text-gray-700 bg-gray-100 p-3 rounded shadow-inner">
-                    {formData.education.map((edu, i) => <li key={i}>{edu}</li>)}
+                    {formData.education.map((edu, i) => (
+                      <li key={i}>{edu}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
               {/* Work View */}
               <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Current Work</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                  Current Work
+                </h3>
                 <div className="overflow-x-auto">
                   <ul className="list-disc list-inside text-gray-700 bg-gray-100 p-3 rounded shadow-inner">
-                    {formData.work.map((job, i) => <li key={i}>{job}</li>)}
+                    {formData.work.map((job, i) => (
+                      <li key={i}>{job}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
