@@ -1,27 +1,94 @@
-import { useState } from 'react';
-import { FiUser, FiLock, FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
+import { useState } from "react";
+import { FiUser, FiLock, FiMail, FiEye, FiEyeOff } from "react-icons/fi";
+import { auth, db } from "../../../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const AuthHero = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: ''
+    email: "",
+    password: "",
+    name: "",
   });
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const toggleAuthMode = () => setIsLogin(!isLogin);
+  const toggleAuthMode = () => {
+    setIsLogin(!isLogin);
+    setError("");
+  };
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle authentication logic here
-    console.log(formData);
+    const { email, password, name } = formData;
+    setError("");
+    try {
+      if (isLogin) {
+        await signInWithEmailAndPassword(
+          auth,
+          formData.email,
+          formData.password
+        );
+        await setDoc(doc(db, "users", user.uid), {
+          name,
+          email,
+          uid: user.uid,
+          createdAt: new Date(),
+        });
+        alert("Logged in successfully!");
+      } else {
+        await createUserWithEmailAndPassword(
+          auth,
+          formData.email,
+          formData.password
+        );
+        alert("Account created successfully!");
+        navigate("/");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid,
+          photoURL: user.photoURL,
+          provider: "google",
+          createdAt: new Date(),
+        },
+        { merge: true }
+      );
+
+      alert("Signed in with Google!");
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
   };
 
   return (
@@ -30,10 +97,10 @@ const AuthHero = () => {
         {/* Header */}
         <div className="bg-blue-600 p-8 text-center">
           <h1 className="text-3xl font-bold text-white">
-            {isLogin ? 'Welcome Back' : 'Create Account'}
+            {isLogin ? "Welcome Back" : "Create Account"}
           </h1>
           <p className="text-blue-100 mt-2">
-            {isLogin ? 'Login to your account' : 'Join us today'}
+            {isLogin ? "Login to your account" : "Join us today"}
           </p>
         </div>
 
@@ -101,7 +168,7 @@ const AuthHero = () => {
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200"
             >
-              {isLogin ? 'Login' : 'Sign Up'}
+              {isLogin ? "Login" : "Sign Up"}
             </button>
           </form>
 
@@ -110,7 +177,9 @@ const AuthHero = () => {
               onClick={toggleAuthMode}
               className="text-blue-600 hover:text-blue-800 font-medium"
             >
-              {isLogin ? "Don't have an account? Sign Up" : "Already have an account? Login"}
+              {isLogin
+                ? "Don't have an account? Sign Up"
+                : "Already have an account? Login"}
             </button>
           </div>
 
@@ -121,12 +190,23 @@ const AuthHero = () => {
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-4">
-            <button className="flex items-center justify-center gap-2 border border-blue-200 rounded-lg py-2 px-4 hover:bg-blue-50 transition">
-              <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5 h-5" alt="Google" />
+            <button
+              onClick={handleGoogleSignIn}
+              className="flex items-center justify-center gap-2 border border-blue-200 rounded-lg py-2 px-4 hover:bg-blue-50 transition"
+            >
+              <img
+                src="https://www.svgrepo.com/show/355037/google.svg"
+                className="w-5 h-5"
+                alt="Google"
+              />
               <span>Google</span>
             </button>
             <button className="flex items-center justify-center gap-2 border border-blue-200 rounded-lg py-2 px-4 hover:bg-blue-50 transition">
-              <img src="https://www.svgrepo.com/show/448234/facebook.svg" className="w-5 h-5" alt="Facebook" />
+              <img
+                src="https://www.svgrepo.com/show/448234/facebook.svg"
+                className="w-5 h-5"
+                alt="Facebook"
+              />
               <span>Facebook</span>
             </button>
           </div>
