@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const Workshop = () => {
+  const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -33,19 +34,19 @@ const Workshop = () => {
       seats: '15/30 seats available'
     },
     {
-        id: 'ws1',
-        title: 'Digital Marketing Fundamentals',
-        date: 'June 15, 2023',
-        instructor: 'Sarah Johnson',
-        seats: '12/25 seats available'
-      },
-      {
-        id: 'ws1',
-        title: 'Digital Marketing Fundamentals',
-        date: 'June 15, 2023',
-        instructor: 'Sarah Johnson',
-        seats: '12/25 seats available'
-      }
+      id: 'ws4',
+      title: 'Digital Marketing Fundamentals',
+      date: 'June 15, 2023',
+      instructor: 'Sarah Johnson',
+      seats: '12/25 seats available'
+    },
+    {
+      id: 'ws5',
+      title: 'Digital Marketing Fundamentals',
+      date: 'June 15, 2023',
+      instructor: 'Sarah Johnson',
+      seats: '12/25 seats available'
+    }
   ];
 
   const handleChange = (e) => {
@@ -75,6 +76,10 @@ const Workshop = () => {
           message: result.message || 'Registration successful!'
         });
         setFormData({ name: '', email: '', workshop: '' });
+        
+        // Update local state immediately
+        setRegisteredWorkshops(prev => [...prev, result.registration]);
+        
         setTimeout(() => setShowForm(false), 2000);
       } else {
         setNotification({
@@ -95,7 +100,7 @@ const Workshop = () => {
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        
+        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
             Upcoming Workshops
@@ -105,7 +110,7 @@ const Workshop = () => {
           </p>
         </div>
 
-        
+        {/* Workshop Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {workshops.map((workshop) => (
             <div 
@@ -162,12 +167,20 @@ const Workshop = () => {
                 }`}>
                   {notification.message}
                   {notification.type === 'success' && (
-                    <button
-                      onClick={() => setShowForm(false)}
-                      className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
-                    >
-                      Close
-                    </button>
+                    <div className="mt-4 space-y-2">
+                      <button
+                        onClick={() => setShowForm(false)}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
+                      >
+                        Close
+                      </button>
+                      <button
+                        onClick={() => window.location.href = '/log'}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg"
+                      >
+                        View Your Registrations
+                      </button>
+                    </div>
                   )}
                 </div>
               ) : (

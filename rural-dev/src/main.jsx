@@ -8,6 +8,9 @@ import Workshop from "./assets/components/workshop/workshop.jsx";
 import Job from "./assets/components/job/job.jsx";
 import Marketplace from "./assets/components/marketplace/marketplace.jsx";
 import Login from "./assets/components/login/AuthHero.jsx";
+import Profile from "./assets/components/profile/profile.jsx";
+import Log from "./assets/components/log/userlog.jsx";
+import Admin from "./assets/components/marketplace/admin.jsx"
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -39,6 +42,18 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/log",
+        element: <Log />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
       },
     ],
   },
