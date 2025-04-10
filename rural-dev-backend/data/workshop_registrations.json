@@ -22,5 +22,29 @@
     "date": "2025-04-10T13:36:25.250586",
     "id": "1744272385.250586",
     "status": "registered"
+  },
+  {
+    "name": "Anubhab De",
+    "email": "deanubhab555@gmail.com",
+    "workshop": "Digital Marketing Fundamentals",
+    "date": "2025-04-11T02:00:26.993952",
+    "id": "1744317026.993952",
+    "status": "registered"
+  },
+  {
+    "name": "Anubhab De",
+    "email": "anubhabde700@gmail.com",
+    "workshop": "Financial Planning Workshop",
+    "date": "2025-04-11T02:03:21.481062",
+    "id": "1744317201.481062",
+    "status": "registered"
+  },
+  {
+    "name": "xyz",
+    "email": "anubhabde700@gmail.com",
+    "workshop": "Digital Marketing Fundamentals",
+    "date": "2025-04-11T02:03:56.821211",
+    "id": "1744317236.821211",
+    "status": "registered"
   }
 ]
